@@ -1,0 +1,8 @@
+flask
+pytest
+pytest-mock
+requests
+faker
+flask-limiter
+flask-restx
+gunicorn
