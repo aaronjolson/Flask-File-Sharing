@@ -1,7 +1,5 @@
-# Flask-Mock-Data-Api
-Api written in Python Flask that can be used to retrieve mock data. 
-It has Swagger 2.0 documentation automatically generated using the Flask-restx/flask-restplus library.
-It comes with pre-configured IP address level rate limiting via Flask-Limiter and is ready to be deployed to Heroku.
+# Flask-File-Sharing
+File sharing app written in Flask 
 
 ## Installation
 `pip install -r requirements.txt`
