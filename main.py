@@ -2,11 +2,11 @@ from flask import Flask
 from flask_restx import Resource
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from handlers.places import place, places
-from handlers.people import person, people
+from handlers.files import file, files
+from handlers.user import user, users
 from apis import api
-from apis.user_models import person_response, people_response
-from apis.file_models import place_response, places_response
+from apis.user_models import user_response, users_response
+from apis.file_models import file_response, files_response
 from apis.ex_models import thing_response, things_response
 
 app = Flask(__name__)
@@ -20,14 +20,14 @@ limiter = Limiter(
 )
 
 
-peopleEndpoints = api.namespace(
-    'People',
+userEndpoints = api.namespace(
+    'Users',
     path='/',
-    description='Endpoints that output human-like data'
+    description='Endpoints that output user data'
 )
 
-placesEndpoints = api.namespace(
-    'Places',
+fileEndpoints = api.namespace(
+    'Files',
     path='/',
     description='Endpoints that output place data'
 )
@@ -39,44 +39,36 @@ class HelloWorld(Resource):
         return 'Hello, World!'
 
 
-@peopleEndpoints.route('/person', methods=['GET'])
-class Person(Resource):
-    @peopleEndpoints.response(code=200, model=person_response, description='')
+@userEndpoints.route('/user', methods=['GET'])
+class User(Resource):
+    @userEndpoints.response(code=200, model=user_response, description='')
     def get(self):
-        '''returns example data representative of a person'''
-        return person()
+        '''returns example data representative of a user'''
+        return user()
 
 
-@peopleEndpoints.route('/people', methods=['GET'])
+@userEndpoints.route('/users', methods=['GET'])
 class People(Resource):
-    @peopleEndpoints.response(code=200, model=people_response, description='')
+    @userEndpoints.response(code=200, model=users_response, description='')
     def get(self):
-        '''returns example data representative of several people'''
-        return people()
+        '''returns example data representative of several users'''
+        return users()
 
 
-@placesEndpoints.route('/place', methods=['GET'])
-class Place(Resource):
-    @peopleEndpoints.response(code=200, model=place_response, description='')
+@fileEndpoints.route('/file', methods=['GET'])
+class File(Resource):
+    @fileEndpoints.response(code=200, model=file_response, description='')
     def get(self):
         '''returns example data representative of a place'''
-        return place()
+        return file()
 
 
-@placesEndpoints.route('/places', methods=['GET'])
-class Places(Resource):
-    @peopleEndpoints.response(code=200, model=places_response, description='')
+@fileEndpoints.route('/files', methods=['GET'])
+class Files(Resource):
+    @fileEndpoints.response(code=200, model=files_response, description='')
     def get(self):
-        '''returns example data representative of several places'''
-        return places()
-
-
-@placesEndpoints.route('/places', methods=['POST'])
-class Things(Resource):
-    @peopleEndpoints.response(code=200, model=things_response, description='')
-    def post(self):
-        '''returns example data representative of several places'''
-        return things()
+        '''returns example data representative of several files'''
+        return files()
 
 
 if __name__ == '__main__':

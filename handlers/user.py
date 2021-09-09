@@ -3,7 +3,7 @@ from faker import Faker
 fake = Faker()
 
 
-def make_person():
+def make_user():
     name = fake.name()
     address = fake.address()
     phone = fake.phone_number()
@@ -15,14 +15,14 @@ def make_person():
     return person_payload
 
 
-def person():
-    person_payload = make_person()
+def user():
+    person_payload = make_user()
     return jsonify(person_payload)
 
 
-def people():
-    people_list = []
+def users():
+    user_list = []
     for x in range(10):
-        person = make_person()
-        people_list.append(person)
-    return jsonify({"people": people_list})
+        user = make_user()
+        user_list.append(user)
+    return jsonify({"users": user_list})

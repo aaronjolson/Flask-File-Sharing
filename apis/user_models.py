@@ -28,7 +28,7 @@ user_response = api.model(
 )
 
 users_response = api.model(
-    'People-Response', {
-        "people": fields.List(fields.Nested(model=person_response))
+    'Users-Response', {
+        "user": fields.List(fields.Nested(model=user_response))
     }
 )

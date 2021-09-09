@@ -3,7 +3,7 @@ from faker import Faker
 fake = Faker()
 
 
-def make_thing(params):
+def make_file():
     Faker.seed(0)
     location = fake.location_on_land()
     latitude = location[0]
@@ -21,17 +21,15 @@ def make_thing(params):
     return place_payload
 
 
-def thing():
-    place_payload = make_thing()
+def file():
+    place_payload = make_file()
     return jsonify(place_payload)
 
 
-def things():
+def files():
     data = request
-    import pdb
-    pdb.set_trace()
-    things_list = []
+    files_list = []
     for x in range(10):
-        person = make_thing()
-        things_list.append(person)
-    return jsonify({"places": things_list})
+        file = make_file()
+        files_list.append(file)
+    return jsonify({"places": files_list})

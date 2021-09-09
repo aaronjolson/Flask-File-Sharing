@@ -30,14 +30,14 @@ file_obj = {
 }
 
 
-place_response = api.model(
+file_response = api.model(
     'File-Response', {
         **file_obj
     }
 )
 
-places_response = api.model(
-    'Places-Response', {
-        "places": fields.List(fields.Nested(model=place_response))
+files_response = api.model(
+    'Files-Response', {
+        "files": fields.List(fields.Nested(model=file_response))
     }
 )
