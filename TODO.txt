@@ -1,0 +1,6 @@
+TODO:
+- allow users and files to be inserted into the database
+- create endpoint for listing users and adding new users (move this logic into handlers dir)
+- create endpoint for listing files and adding new files (move this logic into handlers dir)
+- make seed script to populate db
+- write some tests with pytest after the above is complete
